@@ -4,7 +4,7 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ loot-explorers-subgraph",
+    "deploy": "graph deploy --product hosted-service lootexplorers/loot-explorers",
     "create-local": "graph create --node http://localhost:8020/ loot-explorers-subgraph",
     "remove-local": "graph remove --node http://localhost:8020/ loot-explorers-subgraph",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 loot-explorers-subgraph"

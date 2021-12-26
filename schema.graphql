@@ -1,6 +1,32 @@
-type ExampleEntity @entity {
+type Owner @entity {
   id: ID!
-  count: BigInt!
-  owner: Bytes! # address
-  approved: Bytes! # address
+  explorers: [Explorer!]! @derivedFrom(field: "owner")
+}
+
+type Explorer @entity {
+  id: ID!
+  owner: Owner! # Address
+
+  # isRevealed: Boolean!
+
+  # # ONLY POST REVEALED
+  # name: String
+  # imageUrl: String
+  # description: String
+  # level: Int
+  # background: String
+  # race: String
+  # allegiance: String
+  # origins: String
+  # type: String # Optional subtype
+  # head: String
+  # face: String # Optional subtype
+  # weapon: String
+  # chestArmor: String
+  # headArmor: String
+  # waistArmor: String
+  # footArmor: String
+  # handArmor: String
+  # necklace: String
+  # ring: String
 }
