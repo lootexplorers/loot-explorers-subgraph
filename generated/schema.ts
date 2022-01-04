@@ -96,3 +96,47 @@ export class Explorer extends Entity {
     this.set("owner", Value.fromString(value));
   }
 }
+
+export class MetadataIPFS extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+
+    this.set("url", Value.fromString(""));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id != null, "Cannot save MetadataIPFS entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        "Cannot save MetadataIPFS entity with non-string ID. " +
+          'Considering using .toHex() to convert the "id" to a string.'
+      );
+      store.set("MetadataIPFS", id.toString(), this);
+    }
+  }
+
+  static load(id: string): MetadataIPFS | null {
+    return changetype<MetadataIPFS | null>(store.get("MetadataIPFS", id));
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value!.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get url(): string {
+    let value = this.get("url");
+    return value!.toString();
+  }
+
+  set url(value: string) {
+    this.set("url", Value.fromString(value));
+  }
+}

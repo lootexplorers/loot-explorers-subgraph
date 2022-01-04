@@ -4,9 +4,10 @@ import {
   Approval,
   ApprovalForAll,
   OwnershipTransferred,
-  Transfer
+  Transfer,
+  SetBaseURICall
 } from "../generated/LootExplorers/LootExplorers"
-import { Explorer, Owner } from "../generated/schema"
+import { Explorer, MetadataIPFS, Owner } from "../generated/schema"
 
 const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
 
@@ -94,4 +95,11 @@ export function handleTransfer(event: Transfer): void {
     explorer.save()
     newOwner.save()
   }
+}
+
+// Updates metadata ipfs whenever base uri is set
+export function handleSetBaseUri(call: SetBaseURICall): void {
+  let metadataIpfs = new MetadataIPFS("1")
+  metadataIpfs.url = call.inputValues[0].value.toString()
+  metadataIpfs.save()
 }

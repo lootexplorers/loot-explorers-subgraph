@@ -30,3 +30,8 @@ type Explorer @entity {
   # necklace: String
   # ring: String
 }
+
+type MetadataIPFS @entity {
+  id: ID!
+  url: String!
+}
