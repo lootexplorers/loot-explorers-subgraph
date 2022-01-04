@@ -37,7 +37,6 @@ export function handleApproval(event: Approval): void {
 
   // // Entities can be written to the store with `.save()`
   // entity.save()
-
   // It is also possible to access smart contracts from mappings. For
   // example, the contract that has emitted the event can be connected to
   // with:
